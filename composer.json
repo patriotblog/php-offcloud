@@ -1,0 +1,22 @@
+{
+  "name": "patriotblog/PHP-Offcloud",
+  "type": "library",
+  "description": "PHP library for Offcloud.com",
+  "keywords": ["Offcloud","torrent","download","cloud","one drive","dropbox", "ftp", "torrent ro ftp", "google drive", "amazon cloud drive", "WebDAV"],
+  "homepage": "https://github.com/patriotblog/PHP-Offcloud",
+  "license": "GNU",
+  "authors": [
+    {
+      "name": " MohammadAli Taebi",
+      "email": "taebi.ali@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.3.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "PHPOffCloud\\": "/"
+    }
+  }
+}
