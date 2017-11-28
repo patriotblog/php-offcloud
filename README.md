@@ -3,7 +3,7 @@ PHP library for Offcloud.com
 
 ## Installation
 
-```
+```     
 composer require patriotblog/php-offcloud
 ```
 
@@ -25,9 +25,6 @@ All requests return JSON, including errors. All parameters should be passed to A
 
 The best way to authentificate to Offcloud is to add "?apikey=" to your API queries, along with your API key. You can find your API key into your account settings @ https://offcloud.com/#/account
 
-```
-https://offcloud.com/api/*/?apikey=API_KEY
-```
 
 ## Submitting an input to Offcloud.com through the API
 
