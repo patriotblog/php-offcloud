@@ -9,17 +9,26 @@ namespace PHPOffCloud;
 class OffCloud
 {
 
+    /** You can find your API key into your account settings @ https://offcloud.com/#/account
+     * @var string
+     */
     private $api_key;
 
-    public function __construct($api_key)
+    /**
+     * @var bool
+     */
+    public $debug;
+
+    public function __construct($api_key, $debug=false)
     {
         $this->api_key = $api_key;
+        $this->debug = $debug;
         return $this;
     }
 
     /**
-     * @param $url
-     * @param null $proxy_id
+     * @param $url string
+     * @param $proxy_id string
      * @return OffCloudFile
      */
     public function instantDownload($url, $proxy_id=null){
@@ -36,6 +45,10 @@ class OffCloud
         return new OffCloudFile($response, $this);
 
     }
+
+    /**
+     * @return OffCloudFile
+     */
     public function cloudDownload($url){
         $response = $this->request(
             'https://offcloud.com/api/cloud/download',
@@ -49,6 +62,10 @@ class OffCloud
         return new OffCloudFile($response);
 
     }
+
+    /**
+     * @return OffCloudFile
+     */
     public function remoteDownload($url, $remote_option_id=null, $folder_id=null){
         $response = $this->request(
             'https://offcloud.com/api/remote/download',
@@ -73,7 +90,7 @@ class OffCloud
             []
         );
 
-        var_dump('response',$response);
+        return $response;
     }
 
     public function remoteAccounts(){
@@ -85,7 +102,8 @@ class OffCloud
         );
 
         if(isset($response->data)){
-            return new OffCloudRemote($response->data);
+            $model = new OffCloudRemote();
+            return $model->load($response->data);
         }else{
             return [];
         }
@@ -120,6 +138,9 @@ class OffCloud
 
         $url .= '&apikey='.$this->api_key;
 
+        if($this->debug)
+            var_dump($url, $parameters);
+
         curl_setopt($ch, CURLOPT_URL,$url);
 
         if($method == 'POST'){
@@ -133,6 +154,8 @@ class OffCloud
 
         curl_close ($ch);
 
+        if($this->debug)
+            var_dump($data);
 
         $object = json_decode($data);
 

@@ -13,7 +13,6 @@ class OffCloudException extends \Exception
 {
     public function __construct($message, $code)
     {
-        //var_dump($message);
         throw new \Exception($message, $code);
     }
 

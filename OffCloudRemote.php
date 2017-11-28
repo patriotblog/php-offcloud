@@ -17,28 +17,32 @@ class OffCloudRemote
     public $port;
     public $usage;
 
-    public function __construct($response)
+    public function __construct()
     {
 
+        return $this;
+
+    }
+    public function load($response){
         if($response && is_array($response)){
             $list = [];
             foreach ($response as $remote) {
-                $object = new OffCloudRemote(null);
+                $object = new OffCloudRemote();
 
-                if(isset($remote->accountId)) $this->accountId = $remote->accountId;
-                if(isset($remote->type)) $this->type = $remote->type;
-                if(isset($remote->remoteOptionId)) $this->remoteOptionId = $remote->remoteOptionId;
-                if(isset($remote->username)) $this->username = $remote->username;
-                if(isset($remote->status)) $this->status = $remote->status;
-                if(isset($remote->host)) $this->host = $remote->host;
-                if(isset($remote->port)) $this->port = $remote->port;
-                if(isset($remote->usage)) $this->usage = $remote->usage;
+                if(isset($remote->accountId)) $object->accountId = $remote->accountId;
+                if(isset($remote->type)) $object->type = $remote->type;
+                if(isset($remote->remoteOptionId)) $object->remoteOptionId = $remote->remoteOptionId;
+                if(isset($remote->username)) $object->username = $remote->username;
+                if(isset($remote->status)) $object->status = $remote->status;
+                if(isset($remote->host)) $object->host = $remote->host;
+                if(isset($remote->port)) $object->port = $remote->port;
+                if(isset($remote->usage)) $object->usage = $remote->usage;
 
                 $list[] = $object;
             }
             return $list;
         }
-        return $this;
-
+        return [];
     }
+
 }

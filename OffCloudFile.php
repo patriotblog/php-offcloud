@@ -57,39 +57,45 @@ class OffCloudFile
         $response = $this->offCloud->request(
             'https://offcloud.com/api/cloud/explore',
             'POST',
-            ['requestId'=>$this->requestId],
-            []
+            [],
+            ['requestId'=>$this->requestId]
         );
+        if(isset($response->error)){
+            throw new \Exception($response->error);
+        }
         return $response;
     }
     public function checkRemoteStatus(){
         $response = $this->offCloud->request(
             'https://offcloud.com/api/remote/status',
             'POST',
-            ['requestId'=>$this->requestId],
-            []
+            [],
+            ['requestId'=>$this->requestId]
         );
 
-        //var_dump('response',$response);
+        if(isset($response->error)){
+            throw new \Exception($response->error);
+        }
         return $response;
     }
 
-    public function cloaudExplore(){
+    public function cloudExplore(){
 
         $response = $this->offCloud->request(
-            'https://offcloud.com/api/rcloud/explore',
+            'https://offcloud.com/api/cloud/explore',
             'POST',
             ['requestId'=>$this->requestId],
             []
         );
 
-        //var_dump('response',$response);
+        if(isset($response->error)){
+            throw new \Exception($response->error);
+        }
         return $response;
     }
 
 
     public static function ParseError($error){
-        $description = 'Unknown Error';
         switch ($error){
             case 'premium':
                 $description = 'User must purchase a premium downloading addon for this download.';
