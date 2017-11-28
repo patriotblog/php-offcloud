@@ -1,6 +1,12 @@
 # PHP-Offcloud
 PHP library for Offcloud.com
 
+## Installation
+
+```
+composer require patriotblog/php-offcloud
+```
+
 Offcloud.com API
 ===============
 
