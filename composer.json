@@ -1,9 +1,9 @@
 {
-  "name": "patriotblog/PHP-Offcloud",
+  "name": "patriotblog/php-offcloud",
   "type": "library",
   "description": "PHP library for Offcloud.com",
   "keywords": ["Offcloud","torrent","download","cloud","one drive","dropbox", "ftp", "torrent ro ftp", "google drive", "amazon cloud drive", "WebDAV"],
-  "homepage": "https://github.com/patriotblog/PHP-Offcloud",
+  "homepage": "https://github.com/patriotblog/php-offcloud",
   "license": "GNU",
   "authors": [
     {
